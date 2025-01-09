@@ -12,18 +12,26 @@ const Display = () => {
   const cityApi = `https://crio-location-selector.onrender.com/country=${selectedCountry}/state=${selectedState}/cities`;
   useEffect(() => {
     const fetchCountry = async () => {
-      const response = await fetch(countryApi);
-      const jsonData = await response.json();
-      setCountrys(jsonData);
+      try {
+        const response = await fetch(countryApi);
+        const jsonData = await response.json();
+        setCountrys(jsonData);
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchCountry();
   }, []);
 
   useEffect(() => {
     const fetchState = async () => {
-      const response = await fetch(stateApi);
-      const jsonData = await response.json();
-      setStates(jsonData);
+      try {
+        const response = await fetch(stateApi);
+        const jsonData = await response.json();
+        setStates(jsonData);
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchState();
     setSelectedState("");
@@ -32,9 +40,13 @@ const Display = () => {
 
   useEffect(() => {
     const fetchCity = async () => {
-      const response = await fetch(cityApi);
-      const jsonData = await response.json();
-      setCities(jsonData);
+      try {
+        const response = await fetch(cityApi);
+        const jsonData = await response.json();
+        setCities(jsonData);
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchCity();
     setSelectedCity("");
